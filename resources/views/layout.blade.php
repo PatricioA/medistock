@@ -1,29 +1,29 @@
+
 <!doctype html>
-<html lang="en" class="h-100" data-bs-theme="auto">
-  <head><script src="js/color-modes.js"></script>
-
-    <meta charset="utf-8">
+<html lang="{{ app()->getLocale() }}" class="h-100" data-bs-theme="auto">
+  <head><script src="{{ asset('js/color-modes.js') }}"></script>
+  
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.112.5">
-    <title>MEDISTOCK</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sticky-footer-navbar/">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-    <!--Favicons -->
-<link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<!-- <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json"> -->
+    <!-- Favicons -->
 <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
 <link rel="icon" href="favicon.ico">
 <meta name="theme-color" content="#712cf9">
+
+<link href="" rel="stylesheet">
+<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+
     
     <!-- Custom styles for this template -->
-    <link href="{{ asset('css/style.css')}}" rel="stylesheet">
   </head>
   <body class="d-flex flex-column h-100">
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -77,56 +77,102 @@
       </ul>
     </div>
 
-    <header>
-        <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
-      <div class="container">
-        <a class="navbar-brand d-md-none" href="#">
-          <svg class="bi" width="24" height="24"><use xlink:href="#aperture"/></svg>
-          Aperture
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="#offcanvas" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="#offcanvas" aria-labelledby="#offcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="#offcanvasLabel">Aperture</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav flex-grow-1 justify-content-between">
-              <li class="nav-item"><a class="nav-link" href="#">
-                <svg class="bi" width="24" height="24"><use xlink:href="#aperture"/></svg>
-              </a></li>
-              <li class="nav-item"><a class="nav-link" href="#">HOME</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">INSUMOS</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">PEDIDOS</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">REPORTES</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">MANTENEDOR</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                  </svg>
-              </a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-    </header>
     
-    <!-- Begin page content -->
-    <main class="flex-shrink-0">
-    @yield('content')
-    </main>
-      
-      <footer class="footer mt-auto py-3 bg-body-tertiary">
-        <div class="container">
-          <span class="text-body-secondary">Copyright © 2023 Patricio Almonacid | Todos Los Derechos Reservados</span>
-        </div>
-      </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<header>
+  <!-- Fixed navbar -->
+  <div id="app">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
 
+                    <!-- Right Side Of Navbar -->
+                                    <!-- Authentication Links -->
+                       @guest
+                       <div class="container">
+  <header class="border-bottom lh-1 py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+      <div class="col-4 pt-1">
+        
+      </div>
+      <div class="col-4 text-center">
+      </div>
+      <div class="col-4 d-flex justify-content-end align-items-center">
+      <a class="btn btn-outline-success btn-sm" href="{{ route('login') }}" role="button">Login</a>&nbsp;&nbsp;
+      <a  class="btn btn-info btn-sm"  href="{{ route('register') }}">Registrarme</a>
+      </div>
+    </div>
+  </header>
+
+                        @else
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Insumos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pedidos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Reportes</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Mantenedor
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Usuarios</a></li>
+                <li><a class="dropdown-item" href="#">Categorias</a></li>
+              </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ Auth::user()->name }} 
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item"href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Cerrar sesión</a></li>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+              </ul>
+            </li>
+        </ul>
+
+                        @endguest
+
+      </div>
+    </div>
+  </nav>
+  </div>
+</header>
+<!-- Begin page content -->
+
+<div class="b-example-divider"></div>
+
+<main class="flex-shrink-0">
+  <div class="container">
+  @yield('content')
+  </div>
+</main>
+
+<footer class="footer mt-auto py-3 bg-body-tertiary">
+  <div class="container">
+    <span class="text-body-secondary">Place sticky footer content here.</span>
+  </div>
+</footer>
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </body>
 </html>
