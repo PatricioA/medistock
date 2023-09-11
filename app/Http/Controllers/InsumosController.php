@@ -193,13 +193,18 @@ class InsumosController extends Controller
         DB::raw('insumos.id_insumos AS ID'),
         DB::raw('tipo_insumo.nombre_insumo AS NOMBRE_INSUMO'),
         DB::raw('presentacion.presentacion AS PRESENTACION'),
+        DB::raw('insumos.concentracion_insumo AS CONCENTRACION'),
+        DB::raw('unidades.unidad AS UNIDADES'),
+        DB::raw('insumos.stock_min AS STOCK_MIN'),
         DB::raw('insumos.stock AS STOCK'),
-        DB::raw('SUM(entrega_insumos.cantidad) AS cantidad'))
+        DB::raw('SUM(entrega_insumos.cantidad) cantidad'),
+        DB::raw('SUM(entrega_insumos.cantidad) / stock AS PORCENTAJE'))
 
         ->join('tipo_insumo','insumos.cod_insumo', '=', 'tipo_insumo.cod_insumo')
         ->join('presentacion','insumos.id_presentacion', '=', 'presentacion.id_presentacion')
+        ->join('unidades','insumos.id_unidad', '=', 'unidades.id_unidad')
         ->join('entrega_insumos','insumos.id_insumos', '=', 'entrega_insumos.id_insumo')
-        ->groupBy('ID','NOMBRE_INSUMO', 'PRESENTACION', 'STOCK')
+        ->groupBy('ID','NOMBRE_INSUMO', 'PRESENTACION','CONCENTRACION','UNIDADES', 'STOCK_MIN', 'STOCK')
         ->orderBy('NOMBRE_INSUMO', 'ASC')
         ->get();
                 return view('reportes.index')

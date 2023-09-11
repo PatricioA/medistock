@@ -74,7 +74,7 @@
   <textarea class="form-control" name="obs" id="obs" aria-label="With textarea" value="{{ old('obs') }}"  required ></textarea>
 </div>
 </div>
-    <button class="btn btn-warning btn-block" type="submit">Descontar</button>
+    <button class="btn btn-warning btn-block" type="submit">Devolver</button>
     <a type="button" class="btn btn-dark" href="{{ url()->previous() }}">Volver</a>
   </form>
   </div> 

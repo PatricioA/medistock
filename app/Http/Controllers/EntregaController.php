@@ -25,25 +25,6 @@ class EntregaController extends Controller
         return view('entregas.index', compact('entregas'));
     }
 
-    public function reportevs()
-    {
-    //   $report =  $resultados = DB::table('entrega_insumos')
-    //   ->select('entrega_insumos.id_insumo', 'tipo_insumo.nombre_insumo as NOMBRE_INSUMO', 'presentacion.presentacion as PRESENTACION', 'insumos.stock as STOCK_ACTUAL', DB::raw('SUM(entrega_insumos.cantidad) as CANTIDAD_ENTREGADA'))
-    //   ->join('insumos', 'entrega_insumos.id_insumo', '=', 'insumos.id_insumos')
-    //   ->join('tipo_insumo', 'insumos.cod_insumo', '=', 'tipo_insumo.cod_insumo')
-    //   ->join('presentacion', 'insumos.id_presentacion', '=', 'presentacion.id_presentacion')
-    //   ->groupBy('entrega_insumos.id_insumo')
-    //   ->get();
-  
-    //             return view('reportes.index')
-    //             ->with('report',$report);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $tipoin = TipoInsumo::all();
@@ -86,18 +67,6 @@ class EntregaController extends Controller
         }
 
         EntregaInsumos::insert($datosArray);
-
-        
-
-        // $insumoRebajar = Insumos::all();
-
-        // foreach ($nombres as $index => $nombre) {
-        //     if ($insumoRebajar->id_insumos = $nombre) {
-        //         $datosArray[] = [  
-        //         'stock' => 2,
-        //         ];
-        //     }
-        // }
 
         return back()->with('mensaje', 'Entrega realizada con éxito');
     }
