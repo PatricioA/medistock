@@ -41,6 +41,8 @@ Route::get('/Insumos/Crea', 'InsumosController@create')->name('insumoscrea');
 
 Route::get('/Insumos/{id}', 'InsumosController@devolver')->name('devolver.crea');
 
+Route::get('/Devolver', 'DevolucionInsumoController@index')->name('devolver.ver');
+
 Route::put('devolucionUpdate/{id}', 'InsumosController@devolverUpdate')->name('devolver.update');
 
 Route::put('editar/{id}', 'UserController@update')->name('usuario.update');

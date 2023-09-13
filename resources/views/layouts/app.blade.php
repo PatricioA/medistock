@@ -137,7 +137,7 @@
               <li><a class="dropdown-item" href="{{ route('insumos.tipo') }}">Tipo Insumo</a></li>
                 <li><a class="dropdown-item" href="{{ route('usuarios') }}">Usuarios</a></li>
                 <li><a class="dropdown-item" href="#">Categorias</a></li>
-                <li><a class="dropdown-item" href="#">Devoluciones</a></li>
+                <li><a class="dropdown-item" href="{{ route('devolver.ver') }}">Devoluciones</a></li>
                 <li><a class="dropdown-item" href="#">Presentaciones</a></li>
               </ul>
             </li>
